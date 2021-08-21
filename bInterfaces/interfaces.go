@@ -19,7 +19,7 @@ func gjørAndeTing(andemor and) {
 }
 
 func main() {
-	x := 4
+	//x := 4
 
 	fmt.Println("hekkan")
 }
