@@ -9,10 +9,11 @@ import (
 
 type jsonExample struct {
 	Name string `json:"name"`
-	Age int `json:"age"`
+	Age  int    `json:"age"`
 }
 
-func parseJson() string{
+func parseJson() string {
+
 	jsonE := jsonExample{
 		Name: "Mats Jonassen",
 		Age:  26,

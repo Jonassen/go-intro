@@ -6,13 +6,25 @@ import (
 	"io"
 )
 
-type duck interface{
+type duck interface {
 	quack(times int) string
 	walk() string
 }
 
-type mallard struct{
+type duck2 interface {
+	quacker
+	walker
 }
+
+type quacker interface {
+	quack(times int) string
+}
+
+type walker interface {
+	walk() string
+}
+
+type mallard struct{}
 
 func (d mallard) quack(times int) string {
 	retval := ""
@@ -33,7 +45,9 @@ func doDuckStuff(d duck) {
 
 func main() {
 	var x io.ReadWriter = bytes.NewBuffer([]byte("data"))
-
-	fmt.Println("hekkan")
 	fmt.Println(x)
+
+	m := mallard{}
+
+	doDuckStuff(m)
 }

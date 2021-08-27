@@ -1,6 +1,8 @@
 package music
 
-import "context"
+import (
+	"context"
+)
 
 type SongStorage interface {
 	GetTrack(context.Context, int) (Track, error)

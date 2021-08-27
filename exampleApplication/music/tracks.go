@@ -26,6 +26,7 @@ func (s *Service) AddTrack(ctx context.Context, track Track) (Track, error) {
 	if !track.isValid() {
 		return Track{}, ErrorTrackInvalid{}
 	}
+
 	// Eventuelle service-greier
 	return track, s.storage.SaveTrack(ctx, track)
 }

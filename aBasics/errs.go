@@ -8,13 +8,17 @@ import (
 func errorExample() error {
 	hash := sha256.New()
 
-	_, err := hash.Write([]byte("Data som hashes"))
+	var err error
+
+	value, err := hash.Write([]byte("Data som hashes"))
 	if err != nil {
 		return err
 	}
+	// Now safe to use value
 
 	bytes := hash.Sum(nil)
 	fmt.Printf("%X", bytes)
+	fmt.Println(value)
 
 	return nil
 }

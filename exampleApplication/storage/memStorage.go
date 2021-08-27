@@ -2,6 +2,7 @@ package storage
 
 import (
 	"context"
+
 	"music/music"
 )
 
@@ -15,7 +16,7 @@ type Memory struct{
 	tracks map[int]*music.Track
 }
 
-func (m *Memory) GetTrack(ctx context.Context, i int) (music.Track, error) {
+func (m *Memory) GetTrack(_ context.Context, i int) (music.Track, error) {
 	track := m.tracks[i]
 	if track == nil {
 		return music.Track{}, ErrorNotFound{}
@@ -44,5 +45,3 @@ type ErrorIdCollision struct{}
 func (e ErrorIdCollision) Error() string {
 	return "Id already in use"
 }
-
-

@@ -4,10 +4,11 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"music/music"
-	"music/storage"
 	"net/http"
 	"strings"
+
+	"music/music"
+	"music/storage"
 )
 
 type ServerDependencies struct {
@@ -60,7 +61,7 @@ func getTrack(service music.Service) http.HandlerFunc {
 		track, err := service.GetTrack(r.Context(), trackId.Id)
 
 		if err != nil {
-			if errors.Is(err, storage.ErrorNotFound{}){
+			if errors.Is(err, storage.ErrorNotFound{}) {
 				errStatusCode(w, http.StatusNotFound)
 				return
 			}
